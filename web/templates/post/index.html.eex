@@ -1,0 +1,27 @@
+<h1>PostController - index</h1>
+
+<table class="pure-table pure-table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= for post <- @posts do %>
+      <tr>
+        <td><%= post.id %></td>
+        <td><%= post.title %></td>
+        <td><%= body_shortner(post.body) %></td>
+        <td><%= link "show", to: post_path(@conn, :show, post) %></td>
+        <td><%= link "edit", to: post_path(@conn, :edit, post) %></td>
+        <td><%= link "delete", to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <%= link "new post", to: post_path(@conn, :new) %>
+</table>

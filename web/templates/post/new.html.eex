@@ -1,0 +1,15 @@
+<%= form_for @changeset, post_path(@conn, :create), [class: "pure-form pure-form-stacked"], fn f -> %>
+  <fieldset>
+    <legend>Create a new post</legend>
+
+    <%= label f, :title %>
+    <%= text_input f, :title %>
+    <%= error_tag f, :title, class: "pure-form-message" %>
+
+    <%= label f, :body %>
+    <%= textarea f, :body %>
+    <%= error_tag f, :body, class: "pure-form-message" %>
+  </fieldset>
+
+  <%= submit "Create Post", class: "pure-button pure-button-primary" %>
+<% end %>
